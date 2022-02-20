@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+head
+  title !{title}
+  meta(charset='utf-8')
+  meta(name='description' content='')
+  meta(name='author' content='Wai Phyo')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(rel="shortcut icon" type="image/png" href="../images/auth/it-logo-2.png")
+
+  link#auth-theme(href='/layout-css/theme-default.css' rel='stylesheet')
+  link(rel='stylesheet', href='/assets/auth/styles.css')
+
+  // Intl phone input css
+  //- link(href='/layout-css/lib/intl-phone/intl-phone.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css')
+  
+  // Intl phone input js
+  //- script(src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js')
+  script(src="/layout-js/lib/intl-phone/intl-phone.min.js")
+
+body
+  div.login-wrapper
+    div.login-div
+      block content
+      label#error-message
+  
+  script.
+    const theme = localStorage.getItem("theme_name");
+    if (theme) {
+      document.getElementById("auth-theme").href =  `/layout-css/theme-${theme}.css`;
+    }
+
+    const phoneInput = document.querySelector("#phone");
+    const phoneIntl = window.intlTelInput(phoneInput, {
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+    const errorMessage = document.getElementById("error-message");
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+
+    function validateForm() {
+      if (phoneIntl.isValidNumber()) {
+        document.getElementById("phone").value = phoneIntl.getNumber();
+      }
+      else {
+        errorMessage.innerText = `Invalid E.164 format: ${phoneIntl.getNumber()}`;;
+        errorMessage.style.display = "block";
+        return false;
+      }
+    }
+
+    if(message) {
+      errorMessage.innerText = message;
+      errorMessage.style.display = "block";
+    }
