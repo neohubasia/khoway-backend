@@ -13,6 +13,7 @@ router
     });
   })
   .post("/signup", (req, res, next) => {
+    console.log("test", req.body)
     usersDb
       .addUser({ ...req.body, role: "admin (access all)" })
       .then((data) => {
