@@ -4,9 +4,9 @@ module.exports = {
   NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
   APP: {
-    NAME: "Template",
+    NAME: "khoway",
     FILE: "khoway-file",
-    DESC: "Itemplate Core Project",
+    DESC: "Secret message service",
   },
   MONGO: {
     MONGO_USER: process.env.MONGO_USER,

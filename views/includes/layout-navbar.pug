@@ -5,7 +5,7 @@ nav(class="navbar fixed-top shadow-sm ")
     .nav-item 
       a.nav-link(href="#" role='button' title="New Template", data-toggle="modal", data-target="#dialogNewTemplate" )
         span.fa.fa-plus 
-        |  Template
+        | &nbsp; Template
     .nav-item
       a.nav-link(href='#' role='button' title="View Profile")
         span.fa.fa-user 
@@ -17,14 +17,14 @@ nav(class="navbar fixed-top shadow-sm ")
       .dropdown-menu(aria-labelledby='navbarDropdown')
         a.dropdown-item(href="#" role='button' title="Setting", data-toggle="modal", data-target="#dialogSetTheme") 
           span.fa.fa-cog
-          |  Setting
-        a.dropdown-item(href='https://github.com/unlocksth' title="Developers" ) 
+          | &nbsp; Setting
+        a.dropdown-item(href='https://github.com/unlocksth') 
           span.fa.fa-github
-          |  Developers
+          | &nbsp; Developers
         .dropdown-divider
-        a.dropdown-item(href='/logout' title="Logout") 
+        a.dropdown-item(href='/logout') 
           span.fa.fa-sign-out
-          |  Logout
+          | &nbsp; Logout
 
 include ./modal/layout-generator
 include ./modal/layout-theme

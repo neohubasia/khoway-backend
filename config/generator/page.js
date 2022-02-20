@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const connect = require("connect-ensure-login");
 const config = require("../../../../config/index");
-const genDatabase = require("../../../../controllers/generators");
 const menuAccess = require("../../../../utilities/menu-access");
+const genDatabase = require("../../../../controllers/generators");
 const { generateTokenSign } = require("../../models/middlewares/jwt-generate");
 
 router.get("/routings", connect.ensureLoggedIn(), (req, res, next) => {
@@ -33,11 +33,12 @@ router
       db = genDatabase.addData(req.body);
     } else {
       // update data
+      const id = req.body.id;
       const { ["id"]: removed, ...data } = req.body;
       db = genDatabase.updateData(req.body.id, data);
     }
     db.then((result) => {
-      if (result !== null) status = "SUCCESS";
+      if (result != null) status = "SUCCESS";
       res.json({ status: status, data: result });
     }).catch((error) => {
       console.log(`Error ${error}`);

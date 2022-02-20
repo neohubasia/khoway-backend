@@ -138,31 +138,31 @@
       {
         "menuid": "citySubMenu",
         "url": "/cities",
-        "title": "City/Region",
+        "title": "City",
         "icon": "fa fa-list",
         "access": false,
         "active": false,
         "list": {
           "url": "/cities",
-          "title": "City/Region List",
+          "title": "City List",
           "breadcrumb": [
             {
               "url": "",
-              "text": "City/Region List"
+              "text": "City List"
             }
           ]
         },
         "entry": {
           "url": "/city",
-          "title": "City/Region Entry",
+          "title": "City Entry",
           "breadcrumb": [
             {
               "url": "/cities",
-              "text": "City/Region List"
+              "text": "City List"
             },
             {
               "url": "",
-              "text": "City/Region Entry"
+              "text": "City Entry"
             }
           ]
         },

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 
 body {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: "Questrial", sans-serif;
   background: linear-gradient(-45deg, var(--primary), var(--secondary));
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;

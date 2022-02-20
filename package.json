@@ -1,6 +1,6 @@
 {
-  "name": "itemplate-backend",
-  "description": "Itemplate Core Project",
+  "name": "khoway-backend",
+  "description": "Secret message service",
   "version": "1.0.0",
   "private": true,
   "author": {

@@ -3,15 +3,15 @@
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
-
-/* Bootstrap class override here */
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 
 /* Setup font */
 * {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: "Questrial", sans-serif;
 }
 /* End - Setup font */
+
+/* Bootstrap class override here */
 
 /* Nav & nav-item */
 nav.navbar {
@@ -134,7 +134,7 @@ input[type="radio"][value="0"]:checked {
 }
 /* End - Input radio */
 
-/* Scrollbar */
+/* Scrollbar  */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
