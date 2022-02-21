@@ -13,10 +13,10 @@ module.exports = {
     client: "mysql",
     connection: {
       host: "localhost",
-      user: "root",
-      password: null,
-      database: "kho_backend_uat",
       port: 3306,
+      user: "root",
+      database: "kho_backend_uat",
+      password: null,
     },
     migrations: {
       directory: __dirname + "/database/mysqldb/migrations",
@@ -28,11 +28,11 @@ module.exports = {
   production: {
     client: "mysql",
     connection: {
-      host: config.PG.HOST,
-      user: config.PG.USER,
-      password: config.PG.PASSWORD,
-      database: config.PG.DATABASE,
-      port: config.PG.PORT,
+      host: config.MYSQL.HOST,
+      port: config.MYSQL.PORT,
+      user: config.MYSQL.USER,
+      database: config.MYSQL.DB,
+      password: config.MYSQL.PW,
       ssl: true,
     },
     migrations: {

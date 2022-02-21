@@ -12,12 +12,12 @@ module.exports = {
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PW: process.env.MONGO_PW,
   },
-  PG: {
-    HOST: process.env.PG_HOST,
-    USER: process.env.PG_USER,
-    DATABASE: process.env.PG_DATABASE,
-    PASSWORD: process.env.PG_PASSWORD,
-    PORT: process.env.PG_PORT,
+  MYSQL: {
+    HOST: process.env.MYSQL_HOST,
+    USER: process.env.MYSQL_USER,
+    PORT: process.env.MYSQL_PORT,
+    DB: process.env.MYSQL_DB,
+    PW: process.env.MYSQL_PW,
   },
   JWT: {
     TEXT: "9E0HU8L48",

@@ -18,6 +18,9 @@ public/uploads/*
 # Log files
 *.log
 
+# Env
+*.env
+
 # Package files
 *.jar
 
