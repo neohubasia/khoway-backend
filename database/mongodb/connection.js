@@ -11,17 +11,15 @@ mongoose.set("useCreateIndex", true);
 
 // Set environment variables
 const env = process.env.NODE_ENV;
+const username = config.MONGO.MONGO_USER;
+const password = config.MONGO.MONGO_PW;
+const connect_urls = {
+  production: `mongodb://${username}:${password}@159.65.140.255:27017/kho_backend_uat?authSource=admin`,
+  development: `mongodb://localhost:27017/kho_backend_uat`,
+};
 
-if (env === "production") {
-  // Using mongoose to connect to MLAB database (Create new database single node free and create new user and set name and password)
-  const username = config.MONGO.MONGO_USER;
-  const password = config.MONGO.MONGO_PW;
-  mongoose.connect(
-    `mongodb://${username}:${password}@159.65.140.255:27017/kho_backend_uat?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
-    );
-} else {
-  mongoose.connect("mongodb://localhost:27017/kho_backend_uat");
-}
+// Create connection
+mongoose.connect(connect_urls[env]);
 
 // Signal connection
 mongoose.connection
