@@ -17,8 +17,8 @@ if (env === "production") {
   const username = config.MONGO.MONGO_USER;
   const password = config.MONGO.MONGO_PW;
   mongoose.connect(
-    `mongodb+srv://${username}:${password}@cluster.ofvxk.mongodb.net/kho_backend_uat?retryWrites=true&w=majority`
-  );
+    `mongodb://${username}:${password}@159.65.140.255:27017/kho_backend_uat?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
+    );
 } else {
   mongoose.connect("mongodb://localhost:27017/kho_backend_uat");
 }
