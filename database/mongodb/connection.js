@@ -5,9 +5,9 @@ const mongoose = require("mongoose");
 // Use ES6 Promises for mongoose
 mongoose.Promise = global.Promise;
 mongoose.set("useUnifiedTopology", true);
-mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", false);
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useCreateIndex", true);
 
 // Set environment variables
 const env = process.env.NODE_ENV;
@@ -20,10 +20,7 @@ if (env === "production") {
     `mongodb+srv://${username}:${password}@cluster.ofvxk.mongodb.net/kho_backend_uat?retryWrites=true&w=majority`
   );
 } else {
-  mongoose.connect("mongodb://localhost:27017/kho_backend_uat"),
-    {
-      useMongoClient: true,
-    };
+  mongoose.connect("mongodb://localhost:27017/kho_backend_uat");
 }
 
 // Signal connection

@@ -30,3 +30,8 @@ Send me a letter to postal code 05251 ✉️
 
 - `mongo -u AdminSmartThingsHub -p --authenticationDatabase admin`
 - `9AZZ44DM1N$MART285`
+
+### MySql with Auth
+
+- `mysql -u root -p`
+- `9@ZZ44DM1N$MART267`
