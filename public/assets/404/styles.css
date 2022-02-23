@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+* {
+  font-family: "Questrial", sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#notfound {
+  position: relative;
+  height: 100vh;
+}
+
+#notfound .notfound {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  width: 100vw;
+  max-width: 720px;
+  font-size: 16px;
+  padding: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound-404 h1 {
+  margin: 0;
+  font-size: 80px;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  animation: tran 3s infinite;
+}
+
+@keyframes tran {
+  0% {
+    opacity: 0.5;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  100% {
+    opacity: 0.5;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}
+
+.notfound h2 {
+  font-size: 26px;
+  text-align: left;
+}
+
+.notfound a {
+  color: white;
+  background: #333;
+  margin: 5px 5px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-box-shadow: 0px 4px 15px -5px rgba(20, 20, 20, 0.3);
+  box-shadow: 0px 4px 15px -5px rgba(20, 20, 20, 0.3);
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.notfound a:hover {
+  color: orange;
+}

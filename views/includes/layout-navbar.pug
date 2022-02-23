@@ -1,0 +1,30 @@
+nav(class="navbar fixed-top shadow-sm ")
+  button.btn.btn-sm#menu-toggle
+    span.fa.fa-bars
+  .user-nav-items.d-flex.align-items-end
+    .nav-item 
+      a.nav-link(href="#" role='button' title="New Template", data-toggle="modal", data-target="#dialogNewTemplate" )
+        span.fa.fa-plus 
+        | &nbsp; Template
+    .nav-item
+      a.nav-link(href='#' role='button' title="View Profile")
+        span.fa.fa-user 
+        | &nbsp; !{user.username}
+        span.sr-only
+    .nav-item.dropdown
+      a.nav-link#navbarDropdown(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
+        span.fa.fa-caret-down
+      .dropdown-menu(aria-labelledby='navbarDropdown')
+        a.dropdown-item(href="#" role='button' title="Setting", data-toggle="modal", data-target="#dialogSetTheme") 
+          span.fa.fa-cog
+          | &nbsp; Setting
+        a.dropdown-item(href='https://github.com/unlocksth') 
+          span.fa.fa-github
+          | &nbsp; Developers
+        .dropdown-divider
+        a.dropdown-item(href='/logout') 
+          span.fa.fa-sign-out
+          | &nbsp; Logout
+
+include ./modal/layout-generator
+include ./modal/layout-theme
