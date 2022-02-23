@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 const connect = require("connect-ensure-login");
 const config = require("../../../../config/index");
 const menuAccess = require("../../../../utilities/menu-access");
-let registersDb = require("../../../../controllers/registers");
+const registersDb = require("../../../../controllers/registers");
 const {
   generateTokenSign,
 } = require("../../../../models/middlewares/jwt-generate");

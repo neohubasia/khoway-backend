@@ -1,4 +1,5 @@
 const knex = require("../../../database/mysqldb/connection");
+const utils = require("../../../utilities/utilities");
 
 const listData = () => {
   return knex.raw(`SELECT * FROM teachers;`).then((data) => data[0]);
@@ -17,6 +18,7 @@ const findDataBy = (prop, val) => {
 };
 
 const addData = (dataObj) => {
+  dataObj.id = utils.objectId();
   return knex("teachers")
     .insert(dataObj)
     .returning("*")
