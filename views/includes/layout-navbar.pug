@@ -9,7 +9,7 @@ nav(class="navbar fixed-top shadow-sm ")
     .nav-item
       a.nav-link(href='#' role='button' title="View Profile")
         span.fa.fa-user 
-        span#username
+        | &nbsp; !{user.username}
         span.sr-only
     .nav-item.dropdown
       a.nav-link#navbarDropdown(href='#' role='button' data-toggle='dropdown' aria-expanded='false')

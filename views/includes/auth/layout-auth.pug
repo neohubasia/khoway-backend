@@ -8,7 +8,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   link(rel="shortcut icon" type="image/png" href="../images/auth/khoway-2.png")
 
-  link#auth-theme(href='/layout-css/theme-default.css' rel='stylesheet')
+  link(href='/layout-css/theme-default.css' rel='stylesheet')
   link(rel='stylesheet', href='/assets/auth/styles.css')
 
   // Intl phone input css
@@ -26,11 +26,6 @@ body
       label#error-message
   
   script.
-    const theme = localStorage.getItem("theme_name");
-    if (theme) {
-      document.getElementById("auth-theme").href =  `/layout-css/theme-${theme}.css`;
-    }
-
     const phoneInput = document.querySelector("#phone");
     const phoneIntl = window.intlTelInput(phoneInput, {
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"

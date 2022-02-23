@@ -18,6 +18,9 @@ public/uploads/*
 # Log files
 *.log
 
+# NPM package.json
+package-lock.json
+
 # Env
 .env
 
@@ -51,4 +54,3 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-

@@ -27,7 +27,7 @@ div.modal.fade#dialogNewTemplate(tabindex='-1', role='dialog', aria-labelledby='
 script.
   $(document).ready(function() {
     $("#dialogGenerate").on('click', function(){
-      const modal_data = JSON.parse( $('#modal_data').val());
+      const modal_data = JSON.parse($('#modal_data').val());
       const modal_name = $('#modal_name').val();
       $.ajax({
         type: "POST",
@@ -35,17 +35,21 @@ script.
         url:  '/d-mar/new-template/'+ modal_name +'?is_page=true',
         data: modal_data ,
         success: function (response) {
-          if (response.status == 'SUCCESS') {
-            Swal.fire({
-              text: "Success",
-              icon: "success"
-            })
-          } else {
-            Swal.fire({
-              text: "Error",
-              icon: "warning"
-            })
-          }
+          response.status != 'SUCCESS' 
+          ? swalWarning({
+                title: "Warning Message",
+                text: "Your template is not generated",
+              },
+              "top",
+              "warning"
+            )
+          : swalWarning({
+                title: "Success Message",
+                text: "Your template is successfully generated",
+              },
+              "top",
+              "success"
+            );
         }
       });
     })

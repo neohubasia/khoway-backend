@@ -37,7 +37,7 @@
 
 /* Theme color */
 .default input:checked + span {
-  background-color: #dddddd;
+  background-color: #666699;
 }
 
 .action input:checked + span {

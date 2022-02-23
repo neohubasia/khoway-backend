@@ -149,7 +149,7 @@ body {
 .link a {
   font-size: 13px;
   text-decoration: none;
-  color: var(--text-gray);
+  color: var(--text-dark);
 }
 
 .link a span {

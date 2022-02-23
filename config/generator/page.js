@@ -4,12 +4,14 @@ const connect = require("connect-ensure-login");
 const config = require("../../../../config/index");
 const menuAccess = require("../../../../utilities/menu-access");
 const genDatabase = require("../../../../controllers/generators");
-const { generateTokenSign } = require("../../models/middlewares/jwt-generate");
+const {
+  generateTokenSign,
+} = require("../../../../models/middlewares/jwt-generate");
 
 router.get("/routings", connect.ensureLoggedIn(), (req, res, next) => {
   res.render("pages/runnerPage-list", {
     ...menuAccess.getProgram(req.user.role, "menuList"), // admin may change on req.user => role
-    token: generateTokenSign(config.jwt.credential.USERNAME),
+    token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),
     app: config.app,
   });
 });
@@ -20,7 +22,7 @@ router
     if (req.params.id) data = await genDatabase.findData("id", req.params.id);
     res.render("pages/runnerPage-entry", {
       ...menuAccess.getProgram(req.user.role, "menuEntry"), // admin may change on req.user => role
-      token: generateTokenSign(config.jwt.credential.USERNAME),
+      token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),
       app: config.app,
       data: data,
     });

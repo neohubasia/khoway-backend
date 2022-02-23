@@ -19,14 +19,18 @@ const addUser = (dataObj) => {
   );
 };
 
-const updateUser = async (id, dataObj) => {
+const updateUserWithPass = async (id, dataObj) => {
   const { password } = dataObj;
-  console.log(dataObj);
+  delete dataObj.password;
   return User.findByIdAndUpdate(id, dataObj).then(async (resp) => {
     await resp.setPassword(password);
     const updatedUser = await resp.save();
     return serialize(updatedUser);
   });
+};
+
+const updateUserWithoutPass = async (id, dataObj) => {
+  return User.findByIdAndUpdate(id, dataObj, { new: true }).then(serialize);
 };
 
 const deleteUser = (id) => {
@@ -50,6 +54,7 @@ module.exports = {
   listUsers,
   findUser,
   addUser,
-  updateUser,
+  updateUserWithPass,
+  updateUserWithoutPass,
   deleteUser,
 };

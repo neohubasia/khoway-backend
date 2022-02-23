@@ -52,9 +52,25 @@ users.create = (req, res, next) => {
     });
 };
 
-users.update = (req, res, next) => {
+users.updateWithPass = (req, res, next) => {
   usersDb
-    .updateUser(req.params.id, req.body)
+    .updateUserWithPass(req.params.id, req.body)
+    .then((data) => {
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", data: {} }
+        : { status: "SUCCESS", data: data };
+
+      res.status(200).json(handler_response);
+    })
+    .catch((err) => {
+      console.log(`Error ${err}`);
+      res.status(500).json(handleError(err));
+    });
+};
+
+users.updateWithoutPass = (req, res, next) => {
+  usersDb
+    .updateUserWithoutPass(req.params.id, req.body)
     .then((data) => {
       const handler_response = utils.isEmptyObject(data)
         ? { status: "FAIL", data: {} }
