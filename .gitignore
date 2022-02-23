@@ -19,7 +19,7 @@ public/uploads/*
 *.log
 
 # Env
-*.env
+.env
 
 # Package files
 *.jar
