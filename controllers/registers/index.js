@@ -1,13 +1,13 @@
-let {
+const {
   listData,
   findData,
   findDataBy,
   addData,
   updateData,
   deleteData,
-} = require("./mongodb/index");
+} = require("./mongod/index");
 
-let exportDb = {
+const exportDb = {
   listData,
   findData,
   findDataBy,
