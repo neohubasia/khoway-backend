@@ -25,15 +25,38 @@ block content
           i.fa.fa-clipboard
           span.count-numbers 100
           span.count-name Orders
-    
+    div
+      .col-lg-12.my-5.text-center
+        h2 Charting with Chartjs
+
+      .col-lg-12.my-5
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Line Chart
+          .panel-content.text-center
+            canvas#teamChart.chart(height='380')
+          .panel-footer A simple Line Chart with basic settings
+
+      .col-lg-12.my-5
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Doughut Chart
+          .panel-content.text-center
+            canvas#doughutChart.chart(height='380')
+          .panel-footer A sample Doughut Chart with basic settings
+  script(src='../layout-js/lib/chart-js/chart.bundle.min.js')
+  script(src='../layout-js/lib/chart-js/chart-init.js')
   script.
-    $('.count-numbers').each(function () {
-      var $this = $(this);
-      jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
-        duration: 1200,
-        easing: 'swing',
-        step: function () {
-          $this.text(Math.ceil(this.Counter));
-        }
+    $(document).ready(function() {
+      $('.count-numbers').each(function () {
+        var $this = $(this);
+        jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
+          duration: 1200,
+          easing: 'swing',
+          step: function () {
+            $this.text(Math.ceil(this.Counter));
+          }
+        });
       });
+      getChartdata(token);
     });
