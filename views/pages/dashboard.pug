@@ -25,27 +25,46 @@ block content
           i.fa.fa-clipboard
           span.count-numbers 100
           span.count-name Orders
-    div
-      .col-lg-12.my-5.text-center
-        h2 Charting with Chartjs
-
-      .col-lg-12.my-5
-        .panel.panel-default
+    .card.col-md-12.my-3
+        .panel.panel-default.mx-3.p-3
           .panel-heading
-            h3.panel-title Line Chart
-          .panel-content.text-center
-            canvas#teamChart.chart(height='380')
-          .panel-footer A simple Line Chart with basic settings
+            h3.panel-title Users Chart by Time
+          .panel-content
+            div.row.my-3
+              div.col-sm-3.mb-3
+                label.control-label(for='start_date') Start Date
+                .input-group
+                  input.form-control.change-date.fromdate#start_date(type='text', name='start_date', editable="false" required)
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-calendar
 
-      .col-lg-12.my-5
-        .panel.panel-default
-          .panel-heading
-            h3.panel-title Doughut Chart
-          .panel-content.text-center
-            canvas#doughutChart.chart(height='380')
-          .panel-footer A sample Doughut Chart with basic settings
+              div.col-sm-3.mb-3
+                label.control-label(for='end_date') End Date
+                .input-group
+                  input.form-control.change-date.todate#end_date(type='text', name='end_date', maxlength="55" editable="false" required)
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-calendar
+
+              .col-lg-12.my-5
+                .panel.panel-default
+                  .panel-heading
+                    h3.panel-title Line Chart with Users
+                  .panel-content.text-center
+                    canvas#teamChart.chart(height='380')
+                  .panel-footer A simple Line Chart with Users
+        
+              .col-lg-12.my-5
+                .panel.panel-default
+                  .panel-heading
+                    h3.panel-title Doughut Chart with Users
+                  .panel-content.text-center
+                    canvas#doughutChart.chart(height='380')
+                  .panel-footer A sample Doughut Chart with Users
   script(src='../layout-js/lib/chart-js/chart.bundle.min.js')
-  script(src='../layout-js/lib/chart-js/chart-init.js')
+  //-script(src='../layout-js/lib/chart-js/chart-init.js')
+  script(src='../layout-js/lib/chart-js/users-chart.js')
   script.
     $(document).ready(function() {
       $('.count-numbers').each(function () {
@@ -58,5 +77,12 @@ block content
           }
         });
       });
-      getChartdata(token);
+      $("#start_date").val(moment().add(-1, 'month').format('DD/MM/YYYY'));
+      $("#end_date").val(moment().add().format('DD/MM/YYYY'));
+      getChartdata(token, $("#start_date").val(), $("#end_date").val());
+      $(".change-date").on('change', function() {
+        $("#start_date").val();
+        $("#end_date").val();
+        getChartdata(token, $("#start_date").val(), $("#end_date").val());
+      });
     });
