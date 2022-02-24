@@ -20,6 +20,10 @@ const makeSchema = new Schema({
   role: {
     type: String,
   },
+  theme: {
+    type: String,
+    default: "default",
+  },
   active: {
     type: Boolean,
     default: true,

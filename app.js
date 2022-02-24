@@ -31,7 +31,7 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 const WHITELISTED_DOMAINS = process.env.WHITELISTED_DOMAINS;
 
 const app = express();
-var routeModules = [];
+const routeModules = [];
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -65,6 +65,12 @@ app.use(express.static(path.join(__dirname, "public")));
 fs.readdirSync(__dirname + "/src/web/routes/pages").forEach(function (name) {
   var obj = require(path.join(__dirname, "/src/web/routes/pages/" + name));
   routeModules.push(obj);
+});
+
+// set locals user
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
 });
 
 // connect to routing files

@@ -33,7 +33,8 @@ router
   .get("/users", users.index)
   .get("/user/:id", users.show)
   .post("/user", users.create)
-  .post("/user/:id", users.update)
+  .post("/user/:id", users.updateWithPass)
+  .post("/user-no-pass/:id", users.updateWithoutPass)
   .delete("/user/:id", users.delete);
 
 router

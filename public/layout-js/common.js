@@ -304,8 +304,6 @@ $(".selectpicker").select2({ width: "100%" });
 $("#btnExcel").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
-      position: "top",
-      icon: "warning",
       title: "Warning Message",
       text: "No data available in table to export",
     });
@@ -318,8 +316,6 @@ $("#btnExcel").on("click", function (e) {
 $("#btnPdf").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
-      position: "top",
-      icon: "warning",
       title: "Warning Message",
       text: "No data available in table to export",
     });
@@ -332,8 +328,6 @@ $("#btnPdf").on("click", function (e) {
 $("#btnPrint").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
-      position: "top",
-      icon: "warning",
       title: "Warning Message",
       text: "No data available in table to print",
     });

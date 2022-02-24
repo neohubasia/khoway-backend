@@ -28,7 +28,7 @@ head
   link(href='/assets/dist/css/tagsinput.css' rel='stylesheet')
 
   // Layout CSS
-  link#ref-theme(href='/layout-css/theme-default.css' rel='stylesheet')
+  link(href=`/layout-css/theme-${user.theme}.css` rel='stylesheet')
   link(href='/layout-css/theme-config.css' rel='stylesheet')
   link(href='/layout-css/dashboard.css' rel='stylesheet')
 
@@ -60,6 +60,7 @@ script.
   var table, pageEntry;
   var token = '!{token}';
   var maxImageCount  = 5;
+  var userId = '!{user._id}';
 
   // request permission to user but not still use
   //- if (Notification.permission != "granted") {
@@ -144,23 +145,7 @@ script(src='/layout-js/common.js')
 
 // Menu Toggle Script
 script.
-  const req = new XMLHttpRequest();
-  const theme = localStorage.getItem("theme_name");
-
   $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
   });
-  
-  if (theme) {
-    $("#ref-theme").attr("href", `/layout-css/theme-${theme}.css`);
-  }
-
-  req.open("GET", "/getuser", true);
-  req.send();
-  req.onreadystatechange = function () {
-    if (req.readyState == 4 && req.status == 200) {
-      const user = JSON.parse(req.response).user;
-      $("#username").text(` ${user.username}`);
-    }
-  };

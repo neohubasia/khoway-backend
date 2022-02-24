@@ -2,7 +2,8 @@ const {
   listUsers,
   findUser,
   addUser,
-  updateUser,
+  updateUserWithPass,
+  updateUserWithoutPass,
   deleteUser,
 } = require("./mongod/index");
 
@@ -10,7 +11,8 @@ const exportDb = {
   listUsers,
   findUser,
   addUser,
-  updateUser,
+  updateUserWithPass,
+  updateUserWithoutPass,
   deleteUser,
 };
 

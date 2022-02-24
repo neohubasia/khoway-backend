@@ -8,7 +8,7 @@ const {
   generateTokenSign,
 } = require("../../../../models/middlewares/jwt-generate");
 
-router.get("/getuser", connect.ensureLoggedIn(), (req, res, next) => {
+router.get("/get_user", connect.ensureLoggedIn(), (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",

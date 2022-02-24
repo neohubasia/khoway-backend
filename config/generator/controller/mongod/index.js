@@ -13,7 +13,6 @@ const findData = (prop, val) => {
 };
 
 const findDataBy = (params) => {
-  // if (prop === "id") prop = "_id";
   return Controller.find(params).then(serialize);
 };
 
