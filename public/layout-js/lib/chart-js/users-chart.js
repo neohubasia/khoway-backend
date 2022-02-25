@@ -13,23 +13,25 @@ function removeOldData() {
     myDougChart.update();
   }
   function addNewData(data) {
-    //for line chart
+    let color_array = [];
     data.map(result => {
+      color_array.push("#"+Math.floor(Math.random() * Math.pow(256, 3)).toString(16))
       myLineChart.data.labels.push(result.labeldata);
       myLineChart.data.datasets.forEach((data) => {
         data.data.push(result.count);
       });
-      myLineChart.update();
       //for Doug 
       myDougChart.data.labels.push(result.labeldata);
       myDougChart.data.datasets.forEach((data) => {
-        data.data.push(result.count);
-      });
-      myDougChart.data.datasets.forEach((data) => {
-        data.backgroundColor.push("#"+Math.floor(Math.random() * Math.pow(256, 3)).toString(16));
-      });
-      myDougChart.update();
-  })
+        data.data.push(result.count);  
+      });    
+    });
+    myDougChart.data.datasets.forEach((data) => {
+      data.backgroundColor = color_array;
+      data.hoverBackgroundColor = color_array;
+    });
+    myLineChart.update();
+    myDougChart.update();
   }
   function getChartdata(token, start_date, end_date) {
     $.ajax({
