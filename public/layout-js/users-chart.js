@@ -102,9 +102,9 @@ function randomColor(opacity) {
 }
 
 function addNewData(data) {
-  const labels = data.map((result) => result.labeldata);
+  const labels = data.map((result) => result.label_date);
   const counts = data.map((result) => result.count);
-  const colors = data.map((result) => randomColor(0.5));
+  const colors = data.map((result) => randomColor(0.8));
   // line chart
   myLineChart.data.labels = labels;
   myLineChart.data.datasets[0].data = counts;
@@ -120,7 +120,7 @@ function addNewData(data) {
 
 function getChartData(token, start_date, end_date) {
   $.ajax({
-    url: "/api/chartdata?start_date=" + start_date + "&end_date=" + end_date,
+    url: "/api/chart-data?start_date=" + start_date + "&end_date=" + end_date,
     type: "GET",
     dataType: "json",
     headers: {

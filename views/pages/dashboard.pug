@@ -29,7 +29,7 @@ block content
     .card.col-md-12.my-3
         .panel.panel-default.mx-3.p-3
           .panel-heading
-            h3.panel-title Daily New Users
+            h4.panel-title Daily New Users
           .panel-content
             div.row.my-3
               div.col-sm-3.mb-3
@@ -48,23 +48,25 @@ block content
                     span.input-group-text
                       i.fa.fa-calendar
 
-              .col-lg-12.my-5
-                .panel.panel-default
-                  .panel-heading
-                    h3.panel-title Line Chart: New Users
-                  .panel-content.text-center
-                    canvas#teamChart.chart(height='380')
-                  //- .panel-footer A simple Line Chart with Users
-        
-              .col-lg-12.my-5
-                .panel.panel-default
-                  .panel-heading
-                    h3.panel-title Doughut Chart: New Users
-                  .panel-content.text-center
-                    canvas#doughutChart.chart(height='380')
-                  //- .panel-footer A sample Doughut Chart with Users
+              .col-sm-12.row
+                .col-md-8.my-3
+                  .panel.panel-default
+                    .panel-heading
+                      h5.panel-title Line Chart
+                    .panel-content.text-center
+                      canvas#teamChart.chart(height='380')
+                    //- .panel-footer A simple Line Chart with Users
+
+                .col-md-4.my-3
+                  .panel.panel-default
+                    .panel-heading
+                      h5.panel-title Doughut Chart
+                    .panel-content.text-center
+                      canvas#doughutChart.chart(height='380')
+                    //- .panel-footer A sample Doughut Chart with Users
 
   script(src='../layout-js/lib/chart-js/chart.bundle.min.js')
+  //- script(src='../layout-js/lib/chart-js/chart-init.js')
   script(src='../layout-js/users-chart.js')
   script.
     $(document).ready(function() {
@@ -78,6 +80,7 @@ block content
           }
         });
       });
+
       // set last 1 month duration
       $("#start_date").val(moment().add(-1, 'month').format('DD/MM/YYYY'));
       $("#end_date").val(moment().add().format('DD/MM/YYYY'));

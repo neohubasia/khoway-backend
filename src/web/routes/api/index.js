@@ -27,7 +27,7 @@ router.get("/user-roles", userRoles.index);
 
 router.post("/sign-up", registers.create);
 router.post("/sign-in", registers.login);
-router.get("/chartdata",registers.getChartData);
+router.get("/chart-data", registers.getChartData);
 
 router
   .get("/users", users.index)
@@ -80,5 +80,4 @@ router
   .post("/register", userRegisters.create)
   .post("/register/:id", userRegisters.update)
   .delete("/register/:id", userRegisters.delete)
-  .delete("/registers", userRegisters.deleteAll)
-  
+  .delete("/registers", userRegisters.deleteAll);
