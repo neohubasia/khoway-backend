@@ -44,4 +44,4 @@ jobs:
           cd ~/khoway-stack/khoway-backend
           git pull origin main
           npm install --production
-          pm2 reload 0
+          pm2 restart khowway-backend
