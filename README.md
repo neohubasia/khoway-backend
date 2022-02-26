@@ -6,8 +6,8 @@ Send me a letter to postal code 05251 ✉️
 
 ### Smart Things Hub
 
-- 159.65.140.255
-- root / yaVAp4BUy-XSfDZ
+- `159.65.140.255`
+- `root` / `yaVAp4BUy-XSfDZ`
 
 ### Mail Service
 
@@ -25,6 +25,12 @@ Send me a letter to postal code 05251 ✉️
 ### UFW Config
 
 - `sudo ufw allow from 159.65.140.255 to any port 5000`
+
+### Set up Nginx
+
+- `sudo apt install nginx`
+- `sudo nano /etc/nginx/sites-available/domainname.com`
+- `sudo ln -s /etc/nginx/sites-available/domainname.com /etc/nginx/sites-enabled/domainname.com`
 
 ### Mongo with Auth
 

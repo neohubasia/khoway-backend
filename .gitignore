@@ -19,7 +19,7 @@ public/uploads/*
 *.log
 
 # NPM package.json
-package-lock.json
+# package-lock.json
 
 # Env
 .env

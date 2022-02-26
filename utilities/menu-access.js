@@ -1,5 +1,5 @@
-let programMenu = require("../config/program-menu.json");
-let programAccess = require("../config/program-access.json");
+const programMenu = require("../config/program-menu.json");
+const programAccess = require("../config/program-access.json");
 
 const getProgram = (userRole, pageId) => {
   let programMenuJson = JSON.parse(JSON.stringify(programMenu));
@@ -64,9 +64,8 @@ const getProgram = (userRole, pageId) => {
       program: programMenuJson,
       page: getPageData(programMenuJson, pageId),
     };
-  } else {
-    return;
   }
+  return;
 };
 
 let getPageData = (getProgramMenu, getPageId) => {
