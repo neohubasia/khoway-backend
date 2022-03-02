@@ -6,6 +6,7 @@ const {
   updateData,
   deleteData,
   dropAll,
+  pushMessage,
 } = require("./mongod/index");
 // = require('./memory/index')
 // = require('./postgres/index')
@@ -19,6 +20,7 @@ const exportDb = {
   updateData,
   deleteData,
   dropAll,
+  pushMessage,
 };
 
 module.exports = exportDb;

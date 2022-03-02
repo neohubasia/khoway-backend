@@ -26,6 +26,25 @@ const updateData = (id, dataObj) => {
   return ChatRoom.findByIdAndUpdate(id, dataObj).then(serialize);
 };
 
+const pushMessage = (id, dataObj) => {
+  dataObj.sendtime = new Date();
+  dataObj.status = true;
+  return ChatRoom.updateOne(
+    { _id: id },
+    { $push: { message: dataObj } }
+  ).then((resp) => {
+    return {
+      status: "SUCCESS",
+      message: "Massage Sending Successful"
+    }
+  }).catch((err) => {
+    return {
+      status: "FAIL",
+      message: "Message Sending Unsuccessful",
+    };
+  });
+}
+
 const deleteData = (id) => {
   return ChatRoom.findByIdAndDelete(id)
     .then((resp) => {
@@ -55,4 +74,5 @@ module.exports = {
   updateData,
   deleteData,
   dropAll,
+  pushMessage,
 };

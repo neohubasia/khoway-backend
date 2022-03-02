@@ -113,6 +113,15 @@ chatRoom.update = (req, res, next) => {
     });
 };
 
+chatRoom.push = (req, res, next) => {
+  chatRoomsDb
+    .pushMessage(req.params.id, req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(next);
+};
+
 chatRoom.delete = (req, res, next) => {
   chatRoomsDb
     .deleteData(req.params.id)
