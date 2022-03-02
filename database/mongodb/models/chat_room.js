@@ -7,37 +7,43 @@ const Schema = mongoose.Schema;
 const makeSchema = new Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "register"
+    ref: "register",
   },
   name: {
-    type: String
+    type: String,
+    required: true,
   },
-  message: [{
-    userid: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "register"
+  description: {
+    type: String,
+  },
+  message: [
+    {
+      userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "register",
+      },
+      message: {
+        type: String,
+      },
+      sendtime: {
+        type: Date,
+      },
+      status: {
+        type: Boolean,
+        default: true,
+      },
     },
-    message: {
-      type: String
-    },
-    sendtime: {
-      type: Date
-    },
-    status: {
-      type: Boolean,
-      default: true
-    }
-  }],
+  ],
   status: {
     type: Boolean,
-    default: true
+    default: true,
   },
   created_at: {
-    type: Date
+    type: Date,
   },
   updated_at: {
-    type: Date
-  }
+    type: Date,
+  },
 });
 
 makeSchema.plugin(SchemaPlugin);

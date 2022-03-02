@@ -81,6 +81,7 @@ router
   .post("/register/:id", userRegisters.update)
   .delete("/register/:id", userRegisters.delete)
   .delete("/registers", userRegisters.deleteAll);
+
 /* start chat_room api */
 const chatRooms = require("./chat_room");
 router

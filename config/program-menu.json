@@ -91,17 +91,7 @@
           ]
         },
         "actions": "1,1,1"
-      }
-    ]
-  },
-  {
-    "menuid": "roomMenu",
-    "url": "#",
-    "title": "ChatRoom",
-    "icon": "fa fa-folder",
-    "access": false,
-    "active": false,
-    "submenu": [
+      },
       {
         "menuid": "roomSubMenu",
         "url": "/chat_rooms",
