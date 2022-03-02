@@ -35,7 +35,7 @@ const pushMessage = (id, dataObj) => {
   ).then((resp) => {
     return {
       status: "SUCCESS",
-      message: "Massage Sending Successful"
+      message: "Message Sending Successful"
     }
   }).catch((err) => {
     return {
