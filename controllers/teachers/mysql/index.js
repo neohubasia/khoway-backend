@@ -42,17 +42,10 @@ const deleteData = (id) => {
     .where("id", id)
     .del()
     .then((data) => {
-      return {
-        id: id,
-        status: "SUCCESS",
-        message: "Delete Successful",
-      };
-    })
-    .catch((err) => {
-      return {
-        status: "FAIL",
-        message: "Delete Unsuccessful",
-      };
+      if (data === 1) {
+        return { id: id };
+      }
+      return null;
     });
 };
 

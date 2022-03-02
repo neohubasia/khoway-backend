@@ -59,20 +59,7 @@ const updateData = (id, dataObj) => {
 };
 
 const deleteData = (id) => {
-  return Student.findByIdAndDelete(id)
-    .then((resp) => {
-      return {
-        id: resp._id.toString(),
-        status: "SUCCESS",
-        message: "Delete Successful",
-      };
-    })
-    .catch((err) => {
-      return {
-        status: "FAIL",
-        message: "Delete Unsuccessful",
-      };
-    });
+  return Student.findByIdAndDelete(id).then(serialize);
 };
 
 const dropAll = () => {

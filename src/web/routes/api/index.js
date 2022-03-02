@@ -90,7 +90,7 @@ router
   .get("/chat_room", chatRooms.showBy)
   .post("/chat_room", chatRooms.create)
   .post("/chat_room/:id", chatRooms.update)
-  .post("/chat_rooms/:id", chatRooms.push)
+  .post("/chat_room/send_message/:id", chatRooms.pushMessage)
   .delete("/chat_room/:id", chatRooms.delete)
   .delete("/chat_rooms", chatRooms.deleteAll);
 /* end chat_room api */

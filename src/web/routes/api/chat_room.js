@@ -1,8 +1,6 @@
 const chatRoomsDb = require("../../../../controllers/chat_rooms");
 const utils = require("../../../../utilities/utilities");
-const {
-  handleError
-} = require("../error_handler");
+const { handleError } = require("../error_handler");
 
 const chatRoom = (module.exports = {});
 
@@ -10,15 +8,9 @@ chatRoom.index = (req, res, next) => {
   chatRoomsDb
     .listData()
     .then((data) => {
-      const handler_response = utils.isEmptyArray(data) ?
-        {
-          status: "FAIL",
-          data: []
-        } :
-        {
-          status: "SUCCESS",
-          data: data
-        };
+      const handler_response = utils.isEmptyArray(data)
+        ? { status: "FAIL", data: [] }
+        : { status: "SUCCESS", data: data };
 
       res.status(200).json(handler_response);
     })
@@ -31,15 +23,9 @@ chatRoom.show = (req, res, next) => {
   chatRoomsDb
     .findData("id", req.params.id)
     .then((data) => {
-      const handler_response = utils.isEmptyObject(data) ?
-        {
-          status: "FAIL",
-          data: {}
-        } :
-        {
-          status: "SUCCESS",
-          data: data
-        };
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", data: {} }
+        : { status: "SUCCESS", data: data };
 
       res.status(200).json(handler_response);
     })
@@ -54,15 +40,9 @@ chatRoom.showBy = (req, res, next) => {
   chatRoomsDb
     .findDataBy(req.query)
     .then((data) => {
-      const handler_response = utils.isEmptyArray(data) ?
-        {
-          status: "FAIL",
-          data: []
-        } :
-        {
-          status: "SUCCESS",
-          data: data
-        };
+      const handler_response = utils.isEmptyArray(data)
+        ? { status: "FAIL", data: [] }
+        : { status: "SUCCESS", data: data };
 
       res.status(200).json(handler_response);
     })
@@ -75,15 +55,9 @@ chatRoom.create = (req, res, next) => {
   chatRoomsDb
     .addData(req.body)
     .then((data) => {
-      const handler_response = utils.isEmptyObject(data) ?
-        {
-          status: "FAIL",
-          data: {}
-        } :
-        {
-          status: "SUCCESS",
-          data: data
-        };
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", data: {} }
+        : { status: "SUCCESS", data: data };
 
       res.status(200).json(handler_response);
     })
@@ -96,15 +70,9 @@ chatRoom.update = (req, res, next) => {
   chatRoomsDb
     .updateData(req.params.id, req.body)
     .then((data) => {
-      const handler_response = utils.isEmptyObject(data) ?
-        {
-          status: "FAIL",
-          data: {}
-        } :
-        {
-          status: "SUCCESS",
-          data: data
-        };
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", data: {} }
+        : { status: "SUCCESS", data: data };
 
       res.status(200).json(handler_response);
     })
@@ -113,22 +81,34 @@ chatRoom.update = (req, res, next) => {
     });
 };
 
-chatRoom.push = (req, res, next) => {
+chatRoom.pushMessage = (req, res, next) => {
   chatRoomsDb
     .pushMessage(req.params.id, req.body)
     .then((data) => {
-      res.send(data);
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", data: {} }
+        : { status: "SUCCESS", data: data };
+
+      res.status(200).json(handler_response);
     })
-    .catch(next);
+    .catch((err) => {
+      res.status(500).json(handleError(err));
+    });
 };
 
 chatRoom.delete = (req, res, next) => {
   chatRoomsDb
     .deleteData(req.params.id)
     .then((data) => {
-      res.send(data);
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", message: "Delete Unsuccessful" }
+        : { status: "SUCCESS", message: "Delete Successful" };
+
+      res.status(200).json(handler_response);
     })
-    .catch(next);
+    .catch((err) => {
+      res.status(500).json(handleError(err));
+    });
 };
 
 chatRoom.deleteAll = (req, res, next) => {

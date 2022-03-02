@@ -44,20 +44,7 @@ const updateData = (id, dataObj) => {
 };
 
 const deleteData = (id) => {
-  return Township.findByIdAndDelete(id)
-    .then((resp) => {
-      return {
-        id: resp._id.toString(),
-        status: "SUCCESS",
-        message: "Delete Successful",
-      };
-    })
-    .catch((err) => {
-      return {
-        status: "FAIL",
-        message: "Delete Unsuccessful",
-      };
-    });
+  return Township.findByIdAndDelete(id).then(serialize);
 };
 
 const dropAll = () => {

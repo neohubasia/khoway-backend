@@ -8,7 +8,7 @@ const listData = () => {
 const findData = (prop, val) => {
   if (prop === "id") prop = "_id";
   return ChatRoom.find({
-    [prop]: val
+    [prop]: val,
   }).then((resp) => {
     return serialize(resp[0]);
   });
@@ -27,39 +27,13 @@ const updateData = (id, dataObj) => {
 };
 
 const pushMessage = (id, dataObj) => {
-  dataObj.sendtime = new Date();
-  dataObj.status = true;
-  return ChatRoom.updateOne(
-    { _id: id },
-    { $push: { message: dataObj } }
-  ).then((resp) => {
-    return {
-      status: "SUCCESS",
-      message: "Message Sending Successful"
-    }
-  }).catch((err) => {
-    return {
-      status: "FAIL",
-      message: "Message Sending Unsuccessful",
-    };
-  });
-}
+  return ChatRoom.updateOne({ _id: id }, { $push: { message: dataObj } }).then(
+    serialize
+  );
+};
 
 const deleteData = (id) => {
-  return ChatRoom.findByIdAndDelete(id)
-    .then((resp) => {
-      return {
-        id: resp._id.toString(),
-        status: "SUCCESS",
-        message: "Delete Successful",
-      };
-    })
-    .catch((err) => {
-      return {
-        status: "FAIL",
-        message: "Delete Unsuccessful",
-      };
-    });
+  return ChatRoom.findByIdAndDelete(id).then(serialize);
 };
 
 const dropAll = () => {
@@ -72,7 +46,7 @@ module.exports = {
   findDataBy,
   addData,
   updateData,
+  pushMessage,
   deleteData,
   dropAll,
-  pushMessage,
 };

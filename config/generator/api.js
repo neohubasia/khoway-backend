@@ -85,9 +85,15 @@ genExport.delete = (req, res, next) => {
   genDatabase
     .deleteData(req.params.id)
     .then((data) => {
-      res.send(data);
+      const handler_response = utils.isEmptyObject(data)
+        ? { status: "FAIL", message: "Delete Unsuccessful" }
+        : { status: "SUCCESS", message: "Delete Successful" };
+
+      res.status(200).json(handler_response);
     })
-    .catch(next);
+    .catch((err) => {
+      res.status(500).json(handleError(err));
+    });
 };
 
 genExport.deleteAll = (req, res, next) => {

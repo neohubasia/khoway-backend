@@ -25,8 +25,9 @@ const makeSchema = new Schema({
       message: {
         type: String,
       },
-      sendtime: {
+      send_time: {
         type: Date,
+        default: new Date(),
       },
       status: {
         type: Boolean,

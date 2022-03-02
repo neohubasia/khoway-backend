@@ -12,7 +12,7 @@ router.get("/routings", connect.ensureLoggedIn(), (req, res, next) => {
   res.render("pages/runnerPage-list", {
     ...menuAccess.getProgram(req.user.role, "menuList"), // admin may change on req.user => role
     token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),
-    app: config.app,
+    app: config.APP,
   });
 });
 
@@ -23,7 +23,7 @@ router
     res.render("pages/runnerPage-entry", {
       ...menuAccess.getProgram(req.user.role, "menuEntry"), // admin may change on req.user => role
       token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),
-      app: config.app,
+      app: config.APP,
       data: data,
     });
   })
