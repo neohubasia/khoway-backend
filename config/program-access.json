@@ -1,13 +1,14 @@
 {
   "admin (access all)": "*",
   "supervisor (read, write)": {
-    "menu": ["dashMenu", "generalMenu", "courseMenu", "registerMenu"],
+    "menu": ["dashMenu", "generalMenu", "courseMenu", "registerMenu", "roomMenu"],
     "submenu": [
       "townshipSubMenu,1,1,0",
       "citySubMenu,1,1,0",
       "teacherSubMenu,1,1,1",
       "studentSubMenu,1,1,1",
-      "registerSubMenu,1,1,1"
+      "registerSubMenu,1,1,1",
+      "roomSubMenu,1,1,1"
     ]
   },
   "cashier (read only)": {

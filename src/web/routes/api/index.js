@@ -81,3 +81,14 @@ router
   .post("/register/:id", userRegisters.update)
   .delete("/register/:id", userRegisters.delete)
   .delete("/registers", userRegisters.deleteAll);
+/* start chat_room api */
+const chatRooms = require("./chat_room");
+router
+  .get("/chat_rooms", chatRooms.index)
+  .get("/chat_room/:id", chatRooms.show)
+  .get("/chat_room", chatRooms.showBy)
+  .post("/chat_room", chatRooms.create)
+  .post("/chat_room/:id", chatRooms.update)
+  .delete("/chat_room/:id", chatRooms.delete)
+  .delete("/chat_rooms", chatRooms.deleteAll);
+/* end chat_room api */

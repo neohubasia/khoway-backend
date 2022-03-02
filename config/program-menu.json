@@ -95,6 +95,49 @@
     ]
   },
   {
+    "menuid": "roomMenu",
+    "url": "#",
+    "title": "ChatRoom",
+    "icon": "fa fa-folder",
+    "access": false,
+    "active": false,
+    "submenu": [
+      {
+        "menuid": "roomSubMenu",
+        "url": "/chat_rooms",
+        "title": "Public Room",
+        "icon": "fa fa-list",
+        "access": false,
+        "active": false,
+        "list": {
+          "url": "/chat_rooms",
+          "title": "Public Room List",
+          "breadcrumb": [
+            {
+              "url": "",
+              "text": "Public Room List"
+            }
+          ]
+        },
+        "entry": {
+          "url": "/chat_room",
+          "title": "Public Room Entry",
+          "breadcrumb": [
+            {
+              "url": "/chat_rooms",
+              "text": "Public Room List"
+            },
+            {
+              "url": "",
+              "text": "Public Room Entry"
+            }
+          ]
+        },
+        "actions": "1,1,1"
+      }
+    ]
+  },
+  {
     "menuid": "generalMenu",
     "url": "#",
     "title": "General Setup",
