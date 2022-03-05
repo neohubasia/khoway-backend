@@ -43,7 +43,5 @@ jobs:
         script: |
           cd ~/khoway-stack/khoway-backend
           git pull origin main
-          export NVM_DIR=~/.nvm
-          source ~/.nvm/nvm.sh
           npm install 
           pm2 restart khoway-backend
