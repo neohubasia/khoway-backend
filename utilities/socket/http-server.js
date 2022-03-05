@@ -4,6 +4,7 @@ const http = require("http");
 
 const PORT = 4000;
 const NEW_CHAT_MESSAGE = "newChatMessage";
+const CLIENT_HOST = "http://159.65.140.255:3000";
 
 const serverHttp = http.createServer(express());
 
@@ -13,7 +14,7 @@ const io = require("socket.io")(serverHttp, {
   //   methods: ["GET", "POST"],
   // },
   cors: {
-    origin: "*",
+    origin: CLIENT_HOST,
     methods: ["GET", "POST"],
   },
 });
