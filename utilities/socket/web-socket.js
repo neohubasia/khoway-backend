@@ -1,37 +1,20 @@
-const { io } = require("./http-server");
-const clr = require("../console-color");
-
-const NEW_CHAT_MESSAGE = "newChatMessage";
-const users = [];
+const { io, NEW_CHAT_MESSAGE } = require("./http-server");
 
 io.on("connection", (socket) => {
-  console.log(`${clr.fg.magenta}WS: 🚩 Socket.io is connected`);
-  socket.on("selected_room", (data) => {
-    console.log(
-      `${clr.fg.cyan}WS: '${data.user}' join the room '${data.room}'`
-    );
+  console.log(`Room ${socket.id} connected`);
 
-    socket.join(data.room);
-    const userInRoom = users.find((user) => {
-      user.username === data.username && user.room === data.room;
-    });
+  // Join a conversation
+  const { roomId } = socket.handshake.query;
+  socket.join(roomId);
 
-    userInRoom
-      ? (userInRoom.socket_id = socket.id)
-      : users.push({
-          room: data.room,
-          username: data.username,
-          socket_id: socket.id,
-        });
-  });
-
+  // Listen for new messages
   socket.on(NEW_CHAT_MESSAGE, (data) => {
-    console.log(`${clr.fg.cyan}WS: '${data.room}' receive a new message`);
-    io.in(data.room).emit(NEW_CHAT_MESSAGE, data);
+    io.in(roomId).emit(NEW_CHAT_MESSAGE, data);
   });
 
+  // Leave the room if the user closes the socket
   socket.on("disconnect", () => {
-    socket.leave();
-    console.log(`${clr.fg.yellow}WS: ❌ Socket.io is disconnected`);
+    console.log(`Room ${socket.id} diconnected`);
+    socket.leave(roomId);
   });
 });
