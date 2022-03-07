@@ -1,5 +1,6 @@
 const os = require("os");
 const crypto = require("crypto");
+const unsplash = require("unsplash-source-node");
 
 /**
  * Utils Functions
@@ -190,7 +191,12 @@ module.exports.toTitleCase = function (str, splitWith, joinWith) {
     .join(joinWith);
 };
 
-function randomColor(opacity) {
-  getNumber = () => Math.floor(Math.random() * 255);
-  return `rgba(${getNumber()}, ${getNumber()}, ${getNumber()}, ${opacity})`;
-}
+module.exports.generateImage = async function (width, height, keyword) {
+  const imgUrl = await unsplash({
+    width,
+    height,
+    keyword,
+    redirectURL: true,
+  });
+  return imgUrl;
+};

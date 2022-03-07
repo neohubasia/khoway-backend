@@ -23,12 +23,6 @@ router
   .get("/chat_room/:id?", connect.ensureLoggedIn(), async (req, res, next) => {
     let data = {};
     if (req.params.id) data = await chatRoomsDb.findData("id", req.params.id);
-    /*res.render("pages/chat-room-entry", {
-      ...menuAccess.getProgram(req.user.role, "roomMenu.roomSubMenu.entry"), // admin may change on req.user => role
-      token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),
-      app: config.app,
-      data: data,
-    });*/
     res.render("pages/chat-room-entry", {
       ...menuAccess.getProgram(req.user.role, "registerMenu.roomSubMenu.entry"), // admin may change on req.user => role
       token: generateTokenSign(config.JWT.CREDENTIAL.USERNAME),

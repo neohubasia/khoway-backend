@@ -9,28 +9,25 @@ const makeSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "register",
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  cover_img: {
+  message: {
     type: String,
   },
-  description: {
-    type: String,
+  send_time: {
+    type: Date,
+    default: new Date(),
   },
   status: {
     type: Boolean,
     default: true,
   },
   created_at: {
-    type: Date,
+    type: "Date",
   },
   updated_at: {
-    type: Date,
+    type: "Date",
   },
 });
 
 makeSchema.plugin(SchemaPlugin);
 
-module.exports = mongoose.model("chat_room", makeSchema);
+module.exports = mongoose.model("chat_messages", makeSchema);

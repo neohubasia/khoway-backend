@@ -4,11 +4,11 @@ block content
     include ./../includes/list/layout-list-header
 
     .row
-        each val in  data
-          .col-md-3(onclick=`roomDetail(${JSON.stringify(val)})`)
+        each val in data
+          .col-md-3.my-2(onclick=`roomDetail(${JSON.stringify(val._id)})`)
             .card-counter.primary
               i.fa.fa-comments-o 
-              span.count-numbers !{val.message.length}
+              //- span.count-numbers 
               span.count-name !{val.name}
  
   script.

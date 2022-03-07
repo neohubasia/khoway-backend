@@ -1,4 +1,5 @@
 const ChatRoom = require("../../../database/mongodb/models/chat_room");
+const utils = require("../../../utilities/utilities");
 const serialize = require("../../serializer"); // serializer custom to db
 
 const listData = () => {
@@ -18,18 +19,13 @@ const findDataBy = (params) => {
   return ChatRoom.find(params).then(serialize);
 };
 
-const addData = (dataObj) => {
+const addData = async (dataObj) => {
+  dataObj.cover_img = await utils.generateImage(330, 120, "chatting");
   return ChatRoom.create(dataObj).then(serialize);
 };
 
 const updateData = (id, dataObj) => {
   return ChatRoom.findByIdAndUpdate(id, dataObj).then(serialize);
-};
-
-const pushMessage = (id, dataObj) => {
-  return ChatRoom.updateOne({ _id: id }, { $push: { message: dataObj } }).then(
-    serialize
-  );
 };
 
 const deleteData = (id) => {
@@ -46,7 +42,6 @@ module.exports = {
   findDataBy,
   addData,
   updateData,
-  pushMessage,
   deleteData,
   dropAll,
 };
