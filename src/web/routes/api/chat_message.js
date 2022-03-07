@@ -1,11 +1,11 @@
-const chatRoomsDb = require("../../../../controllers/chat_rooms");
+const chatMessagesDb = require("../../../../controllers/chat_messages");
 const utils = require("../../../../utilities/utilities");
 const { handleError } = require("../error_handler");
 
-const chatRoom = (module.exports = {});
+const chatMessages = (module.exports = {});
 
-chatRoom.index = (req, res, next) => {
-  chatRoomsDb
+chatMessages.index = (req, res, next) => {
+  chatMessagesDb
     .listData()
     .then((data) => {
       const handler_response = utils.isEmptyArray(data)
@@ -19,8 +19,8 @@ chatRoom.index = (req, res, next) => {
     });
 };
 
-chatRoom.show = (req, res, next) => {
-  chatRoomsDb
+chatMessages.show = (req, res, next) => {
+  chatMessagesDb
     .findData("id", req.params.id)
     .then((data) => {
       const handler_response = utils.isEmptyObject(data)
@@ -34,10 +34,10 @@ chatRoom.show = (req, res, next) => {
     });
 };
 
-chatRoom.showBy = (req, res, next) => {
+chatMessages.showBy = (req, res, next) => {
   delete req.query._;
 
-  chatRoomsDb
+  chatMessagesDb
     .findDataBy(req.query)
     .then((data) => {
       const handler_response = utils.isEmptyArray(data)
@@ -51,8 +51,8 @@ chatRoom.showBy = (req, res, next) => {
     });
 };
 
-chatRoom.create = (req, res, next) => {
-  chatRoomsDb
+chatMessages.create = (req, res, next) => {
+  chatMessagesDb
     .addData(req.body)
     .then((data) => {
       const handler_response = utils.isEmptyObject(data)
@@ -66,8 +66,8 @@ chatRoom.create = (req, res, next) => {
     });
 };
 
-chatRoom.update = (req, res, next) => {
-  chatRoomsDb
+chatMessages.update = (req, res, next) => {
+  chatMessagesDb
     .updateData(req.params.id, req.body)
     .then((data) => {
       const handler_response = utils.isEmptyObject(data)
@@ -81,8 +81,8 @@ chatRoom.update = (req, res, next) => {
     });
 };
 
-chatRoom.delete = (req, res, next) => {
-  chatRoomsDb
+chatMessages.delete = (req, res, next) => {
+  chatMessagesDb
     .deleteData(req.params.id)
     .then((data) => {
       const handler_response = utils.isEmptyObject(data)
@@ -96,8 +96,8 @@ chatRoom.delete = (req, res, next) => {
     });
 };
 
-chatRoom.deleteAll = (req, res, next) => {
-  chatRoomsDb
+chatMessages.deleteAll = (req, res, next) => {
+  chatMessagesDb
     .dropAll()
     .then((data) => {
       res.send(data);

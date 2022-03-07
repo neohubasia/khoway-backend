@@ -1,13 +1,16 @@
 const RegisterModel = require("../../../../database/mongodb/models/register");
-const { handleError } = require("../error_handler");
-const md5 = require("md5");
-const moment = require("moment");
 const utils = require("../../../../utilities/utilities");
+const { handleError } = require("../error_handler");
+const avatar = require("cartoon-avatar");
+const moment = require("moment");
+const md5 = require("md5");
+
 const registers = (module.exports = {});
 
 registers.create = (req, res, next) => {
   const { fullname, username, password } = req.body;
   const registerModel = new RegisterModel({
+    avatar: avatar.generate_avatar(),
     fullname,
     username,
     password,

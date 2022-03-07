@@ -90,7 +90,17 @@ router
   .get("/chat_room", chatRooms.showBy)
   .post("/chat_room", chatRooms.create)
   .post("/chat_room/:id", chatRooms.update)
-  .post("/chat_room/send_message/:id", chatRooms.pushMessage)
   .delete("/chat_room/:id", chatRooms.delete)
   .delete("/chat_rooms", chatRooms.deleteAll);
 /* end chat_room api */
+/* start chat_messages api */
+const chatMessages = require("./chat_message");
+router
+  .get("/chat_messagess", chatMessages.index)
+  .get("/chat_messages/:id", chatMessages.show)
+  .get("/chat_messages", chatMessages.showBy)
+  .post("/chat_messages", chatMessages.create)
+  .post("/chat_messages/:id", chatMessages.update)
+  .delete("/chat_messages/:id", chatMessages.delete)
+  .delete("/chat_messagess", chatMessages.deleteAll);
+/* end chat_messages api */

@@ -6,6 +6,9 @@ const SchemaPlugin = require("./helpers/schema-plugin");
 const Schema = mongoose.Schema;
 
 const makeSchema = new Schema({
+  avatar: {
+    type: String,
+  },
   fullname: {
     type: String,
   },
