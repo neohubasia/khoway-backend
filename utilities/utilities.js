@@ -189,3 +189,8 @@ module.exports.toTitleCase = function (str, splitWith, joinWith) {
     .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
     .join(joinWith);
 };
+
+function randomColor(opacity) {
+  getNumber = () => Math.floor(Math.random() * 255);
+  return `rgba(${getNumber()}, ${getNumber()}, ${getNumber()}, ${opacity})`;
+}
