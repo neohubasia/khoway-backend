@@ -1,6 +1,7 @@
 const os = require("os");
 const crypto = require("crypto");
 const unsplash = require("unsplash-source-node");
+const { async } = require("validate.js");
 
 /**
  * Utils Functions
@@ -199,4 +200,10 @@ module.exports.generateImage = async function (width, height, keyword) {
     redirectURL: true,
   });
   return imgUrl;
+};
+
+module.exports.generateCode = async function (radix, length) {
+  const date2Text = Date.now().toString(radix).substring(2);
+  const random2Text = Math.random().toString(radix).substring(2);
+  return (date2Text + random2Text).substring(0, length);
 };
