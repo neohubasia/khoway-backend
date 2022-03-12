@@ -10,14 +10,14 @@ module.exports = {
   },
   MONGO: {
     MONGO_USER: process.env.MONGO_USER,
-    MONGO_PW: process.env.MONGO_PW,
+    MONGO_PASS: process.env.MONGO_PASS,
   },
   MYSQL: {
     HOST: process.env.MYSQL_HOST,
     USER: process.env.MYSQL_USER,
     PORT: process.env.MYSQL_PORT,
-    DB: process.env.MYSQL_DB,
-    PW: process.env.MYSQL_PW,
+    DB: process.env.MYSQL_DATABASE,
+    PW: process.env.MYSQL_PASSWORD,
   },
   JWT: {
     TEXT: "9E0HU8L48",

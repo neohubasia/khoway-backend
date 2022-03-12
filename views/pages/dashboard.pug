@@ -5,26 +5,21 @@ block content
       h3.h3 Dashboard
 
     .row
-      .col-md-3(onclick="location.href='/customers';")
+      .col-md-4(onclick="location.href='/customers';")
         .card-counter.primary
-          i.fa.fa-users
-          span.count-numbers 9999
-          span.count-name Customers
-      .col-md-3(onclick="location.href='/suppliers';")
+          i.fa.fa-unlock-alt
+          span.count-numbers 3
+          span.count-name Administrators
+      .col-md-4(onclick="location.href='/suppliers';")
         .card-counter.purple
-          i.fa.fa-user
+          i.fa.fa-users
           span.count-numbers 99
-          span.count-name Suppliers
-      .col-md-3(onclick="location.href='/products';")
+          span.count-name Public Users
+      .col-md-4(onclick="location.href='/products';")
         .card-counter.success
-          i.fa.fa-cube
-          span.count-numbers 7500
-          span.count-name Products
-      .col-md-3(onclick="location.href='/orders';")
-        .card-counter.info
-          i.fa.fa-clipboard
-          span.count-numbers 100
-          span.count-name Orders
+          i.fa.fa-comments
+          span.count-numbers 150
+          span.count-name Public Rooms
 
     .card.col-md-12.my-3
         .panel.panel-default.mx-3.p-3
