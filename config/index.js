@@ -1,23 +1,28 @@
 require("dotenv").config();
 
 module.exports = {
+  HOST: process.env.APP_HOST,
+  PORT: process.env.APP_PORT,
   NODE_ENV: process.env.NODE_ENV,
-  PORT: process.env.PORT,
   APP: {
     NAME: "khoway",
     FILE: "khoway-file",
     DESC: "Secret message service",
+    DATABASE: process.env.DATABASE_NAME,
+    COOKIE_SECRET: process.env.COOKIE_SECRET,
+    WHITELISTED_DOMAINS: process.env.WHITELISTED_DOMAINS,
   },
   MONGO: {
+    MONGO_HOST: process.env.MONGO_HOST,
+    MONGO_PORT: process.env.MONGO_PORT,
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PASS: process.env.MONGO_PASS,
   },
   MYSQL: {
     HOST: process.env.MYSQL_HOST,
-    USER: process.env.MYSQL_USER,
     PORT: process.env.MYSQL_PORT,
-    DB: process.env.MYSQL_DATABASE,
-    PW: process.env.MYSQL_PASSWORD,
+    USER: process.env.MYSQL_USER,
+    PASS: process.env.MYSQL_PASS,
   },
   JWT: {
     TEXT: "9E0HU8L48",

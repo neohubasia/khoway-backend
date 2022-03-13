@@ -1,4 +1,4 @@
-let config = require("./config/index");
+const config = require("./config/index");
 /**
   In terminal open mysql and create a new database. Then include the name of
   the database and your username and password in the development details below.
@@ -12,11 +12,11 @@ module.exports = {
   development: {
     client: "mysql",
     connection: {
-      host: "localhost",
-      port: 3306,
-      user: "root",
-      database: "kho_backend_uat",
-      password: null,
+      host: config.MYSQL.HOST,
+      port: config.MYSQL.PORT,
+      user: config.MYSQL.USER,
+      password: config.MYSQL.PASS,
+      database: config.APP.DATABASE,
     },
     migrations: {
       directory: __dirname + "/database/mysqldb/migrations",
@@ -31,8 +31,8 @@ module.exports = {
       host: config.MYSQL.HOST,
       port: config.MYSQL.PORT,
       user: config.MYSQL.USER,
-      database: config.MYSQL.DB,
-      password: config.MYSQL.PW,
+      password: config.MYSQL.PASS,
+      database: config.APP.DATABASE,
       ssl: true,
     },
     migrations: {

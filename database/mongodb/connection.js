@@ -10,12 +10,16 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useCreateIndex", true);
 
 // Set environment variables
-const env = process.env.NODE_ENV;
-const username = config.MONGO.MONGO_USER;
-const password = config.MONGO.MONGO_PASS;
+const env = config.NODE_ENV;
+const host = config.MONGO.MONGO_HOST;
+const port = config.MONGO.MONGO_PORT;
+const user = config.MONGO.MONGO_USER;
+const pass = config.MONGO.MONGO_PASS;
+const database = config.APP.DATABASE;
+
 const connect_urls = {
-  production: `mongodb://${username}:${password}@159.65.140.255:27017/kho_backend_uat?authSource=admin`,
-  development: `mongodb://localhost:27017/kho_backend_uat`,
+  production: `mongodb://${user}:${pass}@${host}:${port}/${database}?authSource=admin`,
+  development: `mongodb://${host}:${port}/${database}`,
 };
 
 // Create connection

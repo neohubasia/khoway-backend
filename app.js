@@ -7,6 +7,9 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const logger = require("morgan");
 
+// config app
+config = require("./config/index");
+
 // express session
 const expressSession = require("express-session")({
   secret: "cxowai",
@@ -27,8 +30,8 @@ const fileRouter = require("./src/web/routes/files");
 const UserModel = require("./database/mongodb/models/user");
 
 // set environment variables
-const COOKIE_SECRET = process.env.COOKIE_SECRET;
-const WHITELISTED_DOMAINS = process.env.WHITELISTED_DOMAINS;
+const COOKIE_SECRET = config.APP.COOKIE_SECRET;
+const WHITELISTED_DOMAINS = config.APP.WHITELISTED_DOMAINS;
 
 const app = express();
 const routeModules = [];
