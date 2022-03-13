@@ -12,7 +12,7 @@ mongoose.set("useCreateIndex", true);
 // Set environment variables
 const env = process.env.NODE_ENV;
 const username = config.MONGO.MONGO_USER;
-const password = config.MONGO.MONGO_PASS;
+const password = config.MONGO.MONGO_PW;
 const connect_urls = {
   production: `mongodb://${username}:${password}@159.65.140.255:27017/kho_backend_uat?authSource=admin`,
   development: `mongodb://localhost:27017/kho_backend_uat`,
