@@ -280,6 +280,11 @@ textarea:focus {
 
 .card-counter .count-name {
   position: absolute;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
   top: 66px;
   right: 36px;
   opacity: 0.6;

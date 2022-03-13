@@ -20,6 +20,7 @@ const findDataBy = (params) => {
 };
 
 const addData = async (dataObj) => {
+  dataObj.code = await utils.generateCode(36, 8);
   dataObj.cover_img = await utils.generateImage(330, 120, "chatting");
   return ChatRoom.create(dataObj).then(serialize);
 };
