@@ -10,11 +10,13 @@ const logger = require("morgan");
 // config app
 config = require("./config/index");
 
-// express session
-const expressSession = require("express-session")({
-  secret: "cxowai",
-  resave: false,
-  saveUninitialized: true,
+// cookie session
+const cookieSession = require("cookie-session");
+const cookieConfig = cookieSession({
+  name: "session",
+  keys: ["cxowai"],
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000, // 24 hours
 });
 
 // jwt session
@@ -53,12 +55,12 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(COOKIE_SECRET));
-app.use(expressSession);
+app.use(cookieConfig);
 
 app.use(passport.initialize());
 app.use(passport.session());
