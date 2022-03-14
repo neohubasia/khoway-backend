@@ -93,6 +93,7 @@ router
   .delete("/chat_room/:id", chatRooms.delete)
   .delete("/chat_rooms", chatRooms.deleteAll);
 /* end chat_room api */
+
 /* start chat_messages api */
 const chatMessages = require("./chat_message");
 router

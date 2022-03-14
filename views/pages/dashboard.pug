@@ -7,58 +7,55 @@ block content
     .row
       .col-md-4(onclick="location.href='/customers';")
         .card-counter.primary
-          i.fa.fa-unlock-alt
-          span.count-numbers 3
+          i.fa.fa-user-secret
+          span.count-numbers !{data[0]}
           span.count-name Administrators
       .col-md-4(onclick="location.href='/suppliers';")
         .card-counter.purple
           i.fa.fa-users
-          span.count-numbers 99
+          span.count-numbers !{data[1]}
           span.count-name Public Users
       .col-md-4(onclick="location.href='/products';")
         .card-counter.success
           i.fa.fa-comments
-          span.count-numbers 150
+          span.count-numbers !{data[2]}
           span.count-name Public Rooms
 
     .card.col-md-12.my-3
-        .panel.panel-default.mx-3.p-3
-          .panel-heading
-            h4.panel-title Daily New Users
-          .panel-content
-            div.row.my-3
-              div.col-sm-3.mb-3
-                label.control-label(for='start_date') Start Date
-                .input-group
-                  input.form-control.change-date.fromdate#start_date(type='text', name='start_date', editable="false" required)
-                  .input-group-prepend
-                    span.input-group-text
-                      i.fa.fa-calendar
-
-              div.col-sm-3.mb-3
-                label.control-label(for='end_date') End Date
-                .input-group
-                  input.form-control.change-date.todate#end_date(type='text', name='end_date', maxlength="55" editable="false" required)
-                  .input-group-prepend
-                    span.input-group-text
-                      i.fa.fa-calendar
-
-              .col-sm-12.row
-                .col-md-8.my-3
-                  .panel.panel-default
-                    .panel-heading
-                      h5.panel-title Line Chart
-                    .panel-content.text-center
-                      canvas#teamChart.chart(height='380')
-                    //- .panel-footer A simple Line Chart with Users
-
-                .col-md-4.my-3
-                  .panel.panel-default
-                    .panel-heading
-                      h5.panel-title Doughut Chart
-                    .panel-content.text-center
-                      canvas#doughutChart.chart(height='380')
-                    //- .panel-footer A sample Doughut Chart with Users
+      .panel.panel-default.mx-3.p-3
+        .panel-heading
+          h4.panel-title Daily New Users
+        .panel-content
+          div.row.my-3
+            div.col-sm-3.mb-3
+              label.control-label(for='start_date') Start Date
+              .input-group
+                input.form-control.change-date.fromdate#start_date(type='text', name='start_date', editable="false" required)
+                .input-group-prepend
+                  span.input-group-text
+                    i.fa.fa-calendar
+            div.col-sm-3.mb-3
+              label.control-label(for='end_date') End Date
+              .input-group
+                input.form-control.change-date.todate#end_date(type='text', name='end_date', maxlength="55" editable="false" required)
+                .input-group-prepend
+                  span.input-group-text
+                    i.fa.fa-calendar
+            .col-sm-12.row
+              .col-md-8.my-3
+                .panel.panel-default
+                  .panel-heading
+                    h5.panel-title Line Chart
+                  .panel-content.text-center
+                    canvas#teamChart.chart(height='380')
+                  //- .panel-footer A simple Line Chart with Users
+              .col-md-4.my-3
+                .panel.panel-default
+                  .panel-heading
+                    h5.panel-title Doughut Chart
+                  .panel-content.text-center
+                    canvas#doughutChart.chart(height='380')
+                  //- .panel-footer A sample Doughut Chart with Users
 
   script(src='../layout-js/lib/chart-js/chart.bundle.min.js')
   //- script(src='../layout-js/lib/chart-js/chart-init.js')

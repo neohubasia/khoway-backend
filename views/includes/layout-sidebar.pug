@@ -19,7 +19,7 @@
                         a.list-group-item.list-group-item-action.collapsed(href='#'+programObj.menuid data-toggle='collapse' data-target='#'+programObj.menuid)
                             span(class=programObj.icon)
                             span.pl-1  #{programObj.title}
-                            span.mt-1.pull-right(class=iconType)
+                            span.mt-1.float-right(class=iconType)
                         div.collapse(aria-expanded='false'  class=isShow id=programObj.menuid)
                             each subMenuObj in programObj.submenu
                                 - var isActive = (subMenuObj.active == true) ? "active" : undefined;
