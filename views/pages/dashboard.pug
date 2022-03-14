@@ -5,19 +5,19 @@ block content
       h3.h3 Dashboard
 
     .row
-      .col-md-4(onclick="location.href='/customers';")
+      .col-md-4(onclick="location.href='/users';")
         .card-counter.primary
           i.fa.fa-user-secret
           span.count-numbers !{data[0]}
           span.count-name Administrators
-      .col-md-4(onclick="location.href='/suppliers';")
+      .col-md-4(onclick="location.href='/registers';")
         .card-counter.purple
           i.fa.fa-users
           span.count-numbers !{data[1]}
           span.count-name Public Users
-      .col-md-4(onclick="location.href='/products';")
+      .col-md-4(onclick="location.href='/chat_rooms';")
         .card-counter.success
-          i.fa.fa-comments
+          i.fa.fa-message
           span.count-numbers !{data[2]}
           span.count-name Public Rooms
 

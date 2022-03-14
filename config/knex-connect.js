@@ -1,4 +1,4 @@
-const config = require("./config/index");
+const config = require("./index");
 /**
   In terminal open mysql and create a new database. Then include the name of
   the database and your username and password in the development details below.
