@@ -3,8 +3,6 @@ const router = express.Router();
 
 // api routing
 const dev = require("./develop");
-const students = require("./student");
-const teachers = require("./teacher");
 
 // setup routing
 const cities = require("./city");
@@ -15,10 +13,6 @@ const users = require("./user");
 const registers = require("./register");
 const userRoles = require("./user_role");
 const userRegisters = require("./user_register");
-
-// schema vialidation
-const validateWare = require("../../../../models/middlewares/data-validator");
-const studentSchema = require("../../../../models/validations/students/schema");
 
 module.exports = router;
 
@@ -54,24 +48,6 @@ router
   .post("/city/:id", cities.update)
   .delete("/city/:id", cities.delete)
   .delete("/cities", cities.deleteAll);
-
-router
-  .get("/students", students.index)
-  .get("/student/:id", students.show)
-  .get("/student", students.showBy)
-  .post("/student", validateWare(studentSchema), students.create)
-  .post("/student/:id", validateWare(studentSchema), students.update)
-  .delete("/student/:id", students.delete)
-  .delete("/students", students.deleteAll);
-
-router
-  .get("/teachers", teachers.index)
-  .get("/teacher/:id", teachers.show)
-  .get("/teacher", teachers.showBy)
-  .post("/teacher", teachers.create)
-  .post("/teacher/:id", teachers.update)
-  .delete("/teacher/:id", teachers.delete)
-  .delete("/teachers", teachers.deleteAll);
 
 router
   .get("/registers", userRegisters.index)
