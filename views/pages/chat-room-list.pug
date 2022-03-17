@@ -2,27 +2,28 @@ extends ../includes/layout-main
 block content
   main.ml-sm-auto.px-md-4(role='main')
     include ./../includes/list/layout-list-header
+
     div.data-container.row
-    div.mb-4#pagination-chatroomCard
+    div.mb-4#pagination-chatRoomCard
  
   script.
-    $(function( $ ) {
-      (function(name) {
-        var container = $('#pagination-' + name);
+    $(function($) {
+      (function(cardName) {
+        var container = $('#pagination-' + cardName);
         container.pagination({
           dataSource: function(done) {
-             $.ajax({
-                url: "/api/chat_rooms",
-                data: {
-                  page: { pageSize: 10 }
-                },
-                headers: { "Authorization": "Bearer " + '!{token}' },
-                type: 'GET',
-                dataType: 'json', // added data type
-                success: function(resList) {
-                  done(resList.data);
-                }
-             });
+            $.ajax({
+              url: "/api/chat_rooms",
+              data: {
+                page: { pageSize: 10 }
+              },
+              headers: { "Authorization": "Bearer " + '!{token}' },
+              type: 'GET',
+              dataType: 'json', // added data type
+              success: function(resList) {
+                done(resList.data);
+              }
+            });
           },
           locator: 'items',
           pageSize: 12,
@@ -33,64 +34,89 @@ block content
           showFristOnEllipsisShow: true,
           showLastOnEllipsisShow: true,
           ajax: {
-              beforeSend: function() {
-                //- container.prev().html('Loading data from waiphyo.com ...');
-              }
+            beforeSend: function() {
+              //- container.prev().html('Loading data from waiphyo.com ...');
+            }
           },
           callback: function(response, pagination) {
             window.console && console.log(22, response, pagination);
             var cardData = '';
             $.each(response, function (index, chatroom) {
-              cardData += "<div class='col-md-3 my-1'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/> <button class='btn btn-outline-default btn-delete fa fa-trash' value="+chatroom._id+" /></div></div>";
+              cardData += makeRoomCard(chatroom)
             });
-            $('#loading').hide();
             container.prev().html(cardData);
           }
         })
-      })('chatroomCard'); 
-      setTimeout(function(){
-        $(".btn-delete").on('click', function(){
-          let userId = $(this).val();
-          Swal.fire({
-            position: "top",
-            icon: "question",
-            title: 'Please make sure',
-            text: "Are you sure to delete this ChatRoom?",
-            showCancelButton: true,
-            confirmButtonText: 'OK'
-          }).then((willdelete) => {
-            if(willdelete.isConfirmed) {
-              $.ajax({
-                type: "DELETE",
-                url: `/api/chat_room/${userId}`,
-                headers: { authorization: "Bearer " + token },
-                success: function (response) {
-                  response.status != 'SUCCESS' 
-                  ? swalWarning({
-                        title: "Warning Message",
-                        text: "Can't not delete ChatRoom",
-                      },
-                      "top",
-                      "warning"
-                    )
-                  : Swal.fire({
-                      position: "top",
-                      icon: "success",
-                      title: 'Success Message',
-                      text: "Deleted ChatRoom",
-                      confirmButtonText: 'CLOSE',
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        window.location.reload();
-                      } 
-                    });
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                  alert(errorThrown);
-                },
-              });
-            }
-          });
+      })('chatRoomCard');
+
+      $(document).on("click", ".btn-delete", function(){
+        Swal.fire({
+          position: "top",
+          icon: "warning",
+          title: "Comfirm Alert",
+          text: "Are you sure to delete this?",
+          customClass: "swal-style",
+          showCancelButton: true,
+          confirmButtonText: "DELETE",
+        }).then((willDelete) => {
+          if(willDelete.isConfirmed) {
+            deleteRoom( $(this).val() )
+          }
         });
-      },500);
+      });
+
+      function makeRoomCard(chatroom) {
+        return `
+          <div class='col-md-3 my-1'>
+            <div class='card-counter primary'> 
+              <span class='count-name'>${chatroom.name}</span> 
+              <i class='fa fa-message'/> 
+              <button class='btn btn-delete' value="${chatroom._id}" >
+                <i class='fas fa-trash'/> 
+              </button>
+            </div>
+          </div>`;
+      }
+
+      function deleteRoom(id) {
+        $.ajax({
+          type: "DELETE",
+          url: `/api/chat_room/${id}`,
+          headers: { authorization: "Bearer " + token },
+          success: function (response) {
+            response.status !== "SUCCESS"
+            ? alertWarning()
+            : alertSuccess();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+          },
+        });
+      }
+
+      function alertWarning() {
+        swalWarning(
+          {
+            title: "Warning Message",
+            text: "Can't not delete chat room",
+          },
+          "top",
+          "warning"
+        );
+      }
+
+      function alertSuccess() {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: 'Success Message',
+          text: "Action Successful",
+          customClass: "swal-style",
+          confirmButtonText: 'CLOSE',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          } 
+        });
+      }
     });

@@ -293,15 +293,20 @@ textarea:focus {
   font-style: italic;
   text-transform: capitalize;
 }
+
 .card-counter .btn-delete {
   position: absolute;
   text-align: right;
-  bottom: 70px;
-  right: 25px;
-  font-size: x-large;
+  bottom: 66px;
+  right: 20px;
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
+}
+
+.card-counter .btn-delete i {
+  font-size: 18px;
+  color: var(--text-white);
 }
 /* End - Card counter */
 
