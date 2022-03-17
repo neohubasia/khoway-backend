@@ -490,7 +490,3 @@ function swalWarning(args, position = "top", icon = "warning") {
     customClass: "swal-style",
   });
 }
-
-function roomDetail(roomid){
-  
-}

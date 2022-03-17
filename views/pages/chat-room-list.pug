@@ -3,15 +3,57 @@ block content
   main.ml-sm-auto.px-md-4(role='main')
     include ./../includes/list/layout-list-header
 
-    .row
-        each val in data
-          .col-md-3.my-2(onclick=`roomDetail(${JSON.stringify(val._id)})`)
-            .card-counter.primary
-              i.fa.fa-message
-              //- span.count-numbers 
-              span.count-name !{val.name}
+    //- .row#demo
+    //-     each val in data
+    //-       .col-md-3.my-2(onclick=`roomDetail(${JSON.stringify(val._id)})`)
+    //-         .card-counter.primary
+    //-           i.fa.fa-message
+    //-           //- span.count-numbers 
+    //-           span.count-name !{val.name}
+    div.data-container.row
+    div.mb-4#pagination-chatCard
  
   script.
-    $(document).ready(function() {
-      
+    $(function( $ ) {
+      (function(name) {
+        var container = $('#pagination-' + name);
+        container.pagination({
+          dataSource: function(done) {
+             $.ajax({
+                url: "/api/chat_rooms",
+                data: {
+                  page: { pageSize: 10 }
+                },
+                headers: { "Authorization": "Bearer " + '!{token}' },
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function(resList) {
+                  done(resList.data);
+                }
+             });
+          },
+          locator: 'items',
+          pageSize: 8,
+          showPageNumbers: true,
+          showPrevious: true,
+          showNext: true,
+          showNavigator: true,
+          showFristOnEllipsisShow: true,
+          showLastOnEllipsisShow: true,
+          ajax: {
+              beforeSend: function() {
+                //- container.prev().html('Loading data from waiphyo.com ...');
+              }
+          },
+          callback: function(response, pagination) {
+            window.console && console.log(22, response, pagination);
+            var cardData = '';
+            $.each(response, function (index, chatroom) {
+              cardData += "<div class='col-md-3 my-2'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/></div></div>";
+            });
+            $('#loading').hide();
+            container.prev().html(cardData);
+          }
+        })
+      })('chatCard'); 
     });
