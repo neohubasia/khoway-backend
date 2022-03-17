@@ -33,7 +33,7 @@ block content
              });
           },
           locator: 'items',
-          pageSize: 8,
+          pageSize: 12,
           showPageNumbers: true,
           showPrevious: true,
           showNext: true,
@@ -49,7 +49,7 @@ block content
             window.console && console.log(22, response, pagination);
             var cardData = '';
             $.each(response, function (index, chatroom) {
-              cardData += "<div class='col-md-3 my-2'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/></div></div>";
+              cardData += "<div class='col-md-3 my-1'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/></div></div>";
             });
             $('#loading').hide();
             container.prev().html(cardData);
