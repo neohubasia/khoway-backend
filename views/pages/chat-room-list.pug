@@ -2,16 +2,8 @@ extends ../includes/layout-main
 block content
   main.ml-sm-auto.px-md-4(role='main')
     include ./../includes/list/layout-list-header
-
-    //- .row#demo
-    //-     each val in data
-    //-       .col-md-3.my-2(onclick=`roomDetail(${JSON.stringify(val._id)})`)
-    //-         .card-counter.primary
-    //-           i.fa.fa-message
-    //-           //- span.count-numbers 
-    //-           span.count-name !{val.name}
     div.data-container.row
-    div.mb-4#pagination-chatCard
+    div.mb-4#pagination-chatroomCard
  
   script.
     $(function( $ ) {
@@ -49,11 +41,56 @@ block content
             window.console && console.log(22, response, pagination);
             var cardData = '';
             $.each(response, function (index, chatroom) {
-              cardData += "<div class='col-md-3 my-1'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/></div></div>";
+              cardData += "<div class='col-md-3 my-1'><div class='card-counter primary'> <span class='count-name'>" + chatroom.name +"</span> <i class='fa fa-message'/> <button class='btn btn-outline-default btn-delete fa fa-trash' value="+chatroom._id+" /></div></div>";
             });
             $('#loading').hide();
             container.prev().html(cardData);
           }
         })
-      })('chatCard'); 
+      })('chatroomCard'); 
+      setTimeout(function(){
+        $(".btn-delete").on('click', function(){
+          let userId = $(this).val();
+          Swal.fire({
+            position: "top",
+            icon: "question",
+            title: 'Please make sure',
+            text: "Are you sure to delete this ChatRoom?",
+            showCancelButton: true,
+            confirmButtonText: 'OK'
+          }).then((willdelete) => {
+            if(willdelete.isConfirmed) {
+              $.ajax({
+                type: "DELETE",
+                url: `/api/chat_room/${userId}`,
+                headers: { authorization: "Bearer " + token },
+                success: function (response) {
+                  response.status != 'SUCCESS' 
+                  ? swalWarning({
+                        title: "Warning Message",
+                        text: "Can't not delete ChatRoom",
+                      },
+                      "top",
+                      "warning"
+                    )
+                  : Swal.fire({
+                      position: "top",
+                      icon: "success",
+                      title: 'Success Message',
+                      text: "Deleted ChatRoom",
+                      confirmButtonText: 'CLOSE',
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.reload();
+                      } 
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                  alert(errorThrown);
+                },
+              });
+            }
+          });
+        });
+      },500);
     });
