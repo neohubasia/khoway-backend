@@ -85,9 +85,9 @@ nav.navbar {
 
 /* Sweet alert 2 */
 .swal-style {
-  width: 450px !important;
+  width: 500px !important;
   font-size: 14px !important;
-  margin: 1.75em 0 0 0 !important;
+  margin: 1.5em 0 0 0 !important;
 }
 
 .swal2-styled.swal2-confirm,

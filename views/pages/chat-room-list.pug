@@ -54,7 +54,7 @@ block content
         Swal.fire({
           position: "top",
           icon: "warning",
-          title: "Comfirm Alert",
+          title: "Confirm Message",
           text: "Are you sure to delete this?",
           customClass: "swal-style",
           showCancelButton: true,
@@ -96,14 +96,10 @@ block content
       }
 
       function alertWarning() {
-        swalWarning(
-          {
-            title: "Warning Message",
-            text: "Can't not delete chat room",
-          },
-          "top",
-          "warning"
-        );
+        swalWarning({
+          title: "Warning Message",
+          text: "Can't delete chat room.",
+        });
       }
 
       function alertSuccess() {

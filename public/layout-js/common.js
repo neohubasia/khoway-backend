@@ -305,7 +305,7 @@ $("#btnExcel").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
       title: "Warning Message",
-      text: "No data available in table to export",
+      text: "No data available in table to export.",
     });
     return false;
   }
@@ -317,7 +317,7 @@ $("#btnPdf").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
       title: "Warning Message",
-      text: "No data available in table to export",
+      text: "No data available in table to export.",
     });
     return false;
   }
@@ -329,7 +329,7 @@ $("#btnPrint").on("click", function (e) {
   if (!table.data().count()) {
     swalWarning({
       title: "Warning Message",
-      text: "No data available in table to print",
+      text: "No data available in table to print.",
     });
     return false;
   }
@@ -478,12 +478,19 @@ function ajaxUploadForm(args) {
   });
 }
 
-function swalWarning(args, position = "top", icon = "warning") {
+function swalWarning(args) {
+  const defaultObj = {
+    icon: "warning",
+    position: "center",
+    title: "Warning Message",
+    text: "Something went wrong.",
+  };
+  const { icon, position, title, text } = Object.assign(args, defaultObj);
   Swal.fire({
-    position: position,
     icon: icon,
-    title: args.title,
-    text: args.text,
+    title: title,
+    text: text,
+    position: position,
     buttonsStyling: true,
     showConfirmButton: true,
     confirmButtonText: "CLOSE",

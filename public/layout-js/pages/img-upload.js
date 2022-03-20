@@ -5,7 +5,7 @@ $("#add-image").on("click", function () {
     ? $("#file-input").trigger("click")
     : swalWarning({
         title: "Warning Message",
-        text: "The specified number of images has been reached",
+        text: "The specified number of images has been reached.",
       });
 });
 
