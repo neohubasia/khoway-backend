@@ -98,11 +98,17 @@ nav.navbar {
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: var(--primary) !important;
+  background-color: var(--back-gray) !important;
 }
 
 .swal2-styled.swal2-cancel {
-  background-color: var(--back-gray) !important;
+  background-color: var(--back-white) !important;
+}
+
+.swal2-styled.swal2-confirm:focus,
+.swal2-styled.swal2-cancel:focus {
+  outline: none;
+  box-shadow: none !important;
 }
 /* End - Sweet alert 2 */
 

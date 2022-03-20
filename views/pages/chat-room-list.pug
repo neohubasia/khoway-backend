@@ -30,9 +30,10 @@ block content
           showPageNumbers: true,
           showPrevious: true,
           showNext: true,
-          showNavigator: true,
+          showNavigator: true,   
           showFristOnEllipsisShow: true,
           showLastOnEllipsisShow: true,
+          formatNavigator: `Showing <%= currentPage %> of <%= totalPage %> pages, <%= totalNumber %> entries`,
           ajax: {
             beforeSend: function() {
               //- container.prev().html('Loading data from waiphyo.com ...');
