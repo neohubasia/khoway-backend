@@ -1,43 +1,56 @@
-# khoway-backend
+# Khoway Dashboard
 
-Send me a letter to postal code 05251 ✉️
+This MERN stack project is a chat application, which a user can create multi room and can discuss any other public room.
 
-# Credentails
+---
 
-### Smart Things Hub
+## Requirements
 
-- `159.65.140.255`
-- `root` / `yaVAp4BUy-XSfDZ`
+For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
 
-### Mail Service
+### Node
 
-- `t.unlocksth@gmail.com` / `Mbd299m5Be7MsKdd`
+- #### Node installation on Windows
 
-### SSH-KEYGEN
+  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
+  Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-- `ssh-keygen -t rsa -C "waiphyoenaing.joy007@gmail.com"`
-- `git clone git@github.com:unlocksth/khoway-backend.git`
+- #### Node installation on Ubuntu
 
-### PM2 Start
+  You can install nodejs and npm easily with apt install, just run the following commands.
 
-- `pm2 start bin/www --name khoway-backend`
+      $ sudo apt install nodejs
+      $ sudo apt install npm
 
-### UFW Config
+- #### Other Operating Systems
+  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-- `sudo ufw allow from 159.65.140.255 to any port 5000`
+If the installation was successful, you should be able to run the following command.
 
-### Set up Nginx
+    $ node --version
+    v8.11.3
 
-- `sudo apt install nginx`
-- `sudo nano /etc/nginx/sites-available/domainname.com`
-- `sudo ln -s /etc/nginx/sites-available/domainname.com /etc/nginx/sites-enabled/domainname.com`
+    $ npm --version
+    6.1.0
 
-### Mongo with Auth
+If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
-- `mongo -u AdminSmartThingsHub -p --authenticationDatabase admin`
-- `9AZZ44DM1N$MART285`
+    $ npm install npm -g
 
-### MySql with Auth
+### Yarn installation
 
-- `mysql -u root -p`
-- `9@ZZ44DM1N$MART267`
+After installing node, this project will need yarn too, so just run the following command.
+
+      $ npm install -g yarn
+
+---
+
+## Install
+
+    $ git clone https://github.com/unlocksth/khoway-backend
+    $ cd khoway-backend
+    $ yarn install
+
+## Running the project
+
+    $ yarn start

@@ -123,8 +123,8 @@ input[type="radio"] {
   border: 1.5px solid var(--back-gray);
   background-color: var(--back-white);
   background-clip: content-box;
-  -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
   transform: scale(1.5);
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -203,7 +203,7 @@ textarea:focus {
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding-top: 3.5rem;
+  margin-top: 3.5rem;
   font-size: 1.2rem;
 }
 
